@@ -34,16 +34,20 @@
 
 ## Evidências
 
-A tabela de roteamento demonstra que cada sub-rede está diretamente conectada ao roteador por sua respectiva subinterface. Podemos observar também os endereços de rede e seus respectivos prefixos CIDR.
 
 ### Evidência 1 - Sub-redes configuradas no roteador 
 
+A tabela de roteamento demonstra que cada sub-rede está diretamente conectada ao roteador por sua respectiva subinterface. Podemos observar também os endereços de rede e seus respectivos prefixos CIDR.
+
+
 ![Tabela de roteamento do Router0](../evidencias/evidencia-vlsm-1.png)
+
+
+### Evidencia 2 - Configuração dos gateways e máscaras
 
 A segunda evidência mostra a configuração das quatro subinterfaces do roteador. Essas subinterfaces permitem ao roteador identificar o tráfego de várias VLANs por uma única interface física.
 
 Também podemos observar o encapsulamento IEEE 802.1Q, que permite identificar a qual VLAN pertence cada quadro Ethernet. Como as VLANs compartilham um único cabo para transmitir informações, essa identificação permite ao roteador distinguir o tráfego de cada rede.
-### Evidencia 2 - Configuração dos gateways e máscaras
 
 ![Subinterfaces configuradas no router0](../evidencias/evidencia-vlsm-2.png)
 
