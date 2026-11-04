@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Escolhemos o SSH por ser mais seguro, pois criptografa a comunicação entre os dispositivos. Já o Telnet não possui criptografia, permitindo que as informações transmitidas, incluindo senhas, possam ser interceptadas.
+Decidimos implementar o acesso remoto para permitir que o administrador pudesse acessar e gerenciar o roteador através de outro dispositivo da rede, sem precisar estar fisicamente conectado ao equipamento. Escolhemos o SSH por oferecer maior segurança, pois criptografa a comunicação entre os dispositivos, enquanto o Telnet transmite informações sem criptografia, permitindo que os dados possam ser interceptados.
 
 ## Implementação
 
