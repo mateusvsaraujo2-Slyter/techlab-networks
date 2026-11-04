@@ -15,7 +15,7 @@ switchport mode trunk
 
 A função da porta Trunk foi permitir a conexão das quatro redes ao roteador utilizando apenas um cabo físico.
 
-### Configuração das subinterfaces 
+### Configuração das subinterfaces
 
 ```bash
 interface gigabitEthernet 0/0.10
@@ -43,19 +43,44 @@ O comando `encapsulation dot1Q` permite identificar o tráfego de cada VLAN, uti
 
 Também configuramos um endereço IPv4 diferente em cada subinterface do roteador, para que cada sub-rede tenha seu próprio gateway e possa se comunicar com outras redes.
 
+### Configuração do trunk entre switches
+
+**Switch0:**
+
+```bash
+interface gigabitEthernet 0/2
+switchport mode trunk
+```
+
+**Switch1:**
+
+```bash
+interface gigabitEthernet 0/1
+switchport mode trunk
+```
+
+No Switch0, configuramos a interface GigabitEthernet 0/2 como trunk, conectando-a à interface GigabitEthernet 0/1 do Switch1, que também foi configurada como trunk.
+
+Essa configuração permite transportar o tráfego das quatro VLANs entre os switches utilizando um único cabo físico.
 
 ## Evidências
 
 ### Evidência 1 — Validação do Trunk
 
-O comando `show interfaces trunk` demonstra que a porta Gi0/1 está preparada para transportar o tráfego das quatro VLANs pelo mesmo cabo físico.
+O comando `show interfaces trunk` demonstra que as interfaces Gi0/1 e Gi0/2 estão operando em modo trunk, permitindo transportar o tráfego das quatro VLANs pelos respectivos enlaces.
 
 ![Trunk configurado no Switch0](../evidencias/evidencia-roteamento-1.png)
 
-
 ### Evidência 2 — Comunicação inter-VLAN
 
-Os três testes de ping mostram que a comunicação entre as redes está acontecendo normalmenteo.
-Os testes apresentaram 0% de perda de pacotes, validando a comunicação da VLAN 20,30,40
+Os três testes de ping mostram que a comunicação entre as redes está acontecendo normalmente.
+
+Os testes apresentaram 0% de perda de pacotes, validando a comunicação das VLANs 20, 30 e 40.
 
 ![Teste de comunicação entre as VLANs](../evidencias/evidencia-roteamento-2.png)
+
+### Evidência 3 — Identificação dos dispositivos conectados
+
+O comando `show cdp neighbors` permite identificar os dispositivos conectados ao Switch0 e suas respectivas interfaces. A saída confirma a conexão com o roteador pela interface Gi0/1 e com o Switch1 pela interface Gi0/2.
+
+![Identificação dos dispositivos conectados](../evidencias/evidencia-roteamento-3.png)
